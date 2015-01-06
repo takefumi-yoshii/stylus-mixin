@@ -1,0 +1,234 @@
+
+c() 
+	margin 0 auto
+
+tl(_top = 0, _left = 0)
+	position absolute
+	top _top
+	left _left
+
+tr(_top = 0, _right = 0)
+	position absolute
+	top _top
+	right _right
+
+bl(_bottom = 0, _left = 0)
+	position absolute
+	bottom _bottom
+	left _left
+
+br(_bottom = 0, _right = 0)
+	position absolute
+	bottom _bottom
+	right _right
+
+mmw(_min-width, _max-width)
+	max-width _min-width
+	min-width _max-width
+
+bg(_image, _properties = "")
+	w = image-size(_image)[0]
+	h = image-size(_image)[1]
+	background url(_image) _properties
+
+img(_image, _properties = "", _display = "block")
+	display _display
+	width w = image-size(_image)[0]
+	height h = image-size(_image)[1]
+	background url(_image) _properties
+	overflow hidden
+	text-indent -9999px
+
+// btn($image,$properties "",$boudsType "",$display "") 
+// 	$w image-width($image)
+// 	$h image-height($image)/2
+// 	&
+// 		width  $w
+	
+// 	@if $display != ""
+// 		display  #$display
+	
+// 	a
+// 		display  block
+// 		@if $boudsType == "box"
+// 			width  $w
+// 			height  $h
+// 		@else if $boudsType == "max"
+// 			width  100%
+// 			height  100%
+// 		@else if $boudsType == "wmax"
+// 			width   100%
+// 			height  $h
+// 		@else if $boudsType == "hmax"
+// 			width  $w
+// 			height  100%
+// 		@else if $boudsType == "wi"
+// 			width  "inherit"
+// 			height  $h
+// 		@else if $boudsType == "hi"
+// 			width  $w
+// 			height  "inherit"
+// 		@else if $boudsType == "wmaxi"
+// 			width  100%
+// 			height  "inherit"
+// 		@else if $boudsType == "hmaxi"
+// 			width  "inherit"
+// 			height  100%
+		
+// 		overflow  hidden
+// 		text-indent  -9999px
+// 		background  url($image) #$properties
+// 		& hover
+// 			background-position  0px $h*-1 
+		
+	
+
+// abtn($image,$properties "",$boudsType "",$display "") 
+// 	$w image-width($image)
+// 	$h image-height($image)
+// 	&
+// 		width  $w
+	
+// 	@if $display != ""
+// 		display  #$display
+	
+// 	a
+// 		display  block
+// 		@if $boudsType == "box"
+// 			width  $w
+// 			height  $h
+// 		@else if $boudsType == "max"
+// 			width  100%
+// 			height  100%
+// 		@else if $boudsType == "wmax"
+// 			width   100%
+// 			height  $h
+// 		@else if $boudsType == "hmax"
+// 			width  $w
+// 			height  100%
+// 		@else if $boudsType == "wi"
+// 			width  "inherit"
+// 			height  $h
+// 		@else if $boudsType == "hi"
+// 			width  $w
+// 			height  "inherit"
+// 		@else if $boudsType == "wmaxi"
+// 			width  100%
+// 			height  "inherit"
+// 		@else if $boudsType == "hmaxi"
+// 			width  "inherit"
+// 			height  100%
+		
+// 		overflow  hidden
+// 		text-indent  -9999px
+// 		background  url($image) #$properties
+// 		& hover
+// 			opacity(0.6)
+		
+	
+
+// hover-alpha($alpha 0.6) 
+// 	& hover
+// 		opacity($alpha)
+	
+
+
+// $prefix "-webkit-","-moz-","-ms-","-o-",""
+// animation-repeat($id,$duration,$timingfunction linear)
+// 	@each $var in $prefix
+// 		#$varanimation  animation-repeat-#$id $duration
+// 		#$varanimation-iteration-count  infinite
+// 		#$varanimation-timing-function  $timingfunction
+	
+
+// animation-repeat-keyframes($id,$start,$end) 
+// 	@keyframes animation-repeat-#$id 
+// 		0%  transform  $start 
+// 		100%  transform  $end 
+	
+// 	@-webkit-keyframes animation-repeat-#$id 
+// 		0%  -webkit-transform  $start 
+// 		100%  -webkit-transform  $end 
+	
+// 	@-moz-keyframes animation-repeat-#$id 
+// 		0%  -moz-transform  $start 
+// 		100%  -moz-transform  $end 
+	
+// 	@-ms-keyframes animation-repeat-#$id 
+// 		0%  -ms-transform  $start 
+// 		100%  -ms-transform  $end 
+	
+// 	@-o-keyframes animation-repeat-#$id 
+// 		0%  -o-transform  $start 
+// 		100%  -o-transform  $end 
+	
+
+// animation-shuttle($id,$duration,$timingfunction linear)
+// 	@each $var in $prefix
+// 		#$varanimation  animation-shuttle-#$id $duration
+// 		#$varanimation-iteration-count  infinite
+// 		#$varanimation-timing-function  $timingfunction
+	
+
+// animation-shuttle-keyframes($id,$start,$end) 
+// 	@keyframes animation-shuttle-#$id 
+// 		0%  transform  $start 
+// 		50%  transform  $end 
+// 		100%  transform  $start 
+	
+// 	@-webkit-keyframes animation-shuttle-#$id 
+// 		0%  -webkit-transform  $start 
+// 		50%  -webkit-transform  $end 
+// 		100%  -webkit-transform  $start 
+	
+// 	@-moz-keyframes animation-shuttle-#$id 
+// 		0%  -moz-transform  $start 
+// 		50%  -moz-transform  $end 
+// 		100%  -moz-transform  $start 
+	
+// 	@-ms-keyframes animation-shuttle-#$id 
+// 		0%  -ms-transform  $start 
+// 		50%  -ms-transform  $end 
+// 		100%  -ms-transform  $start 
+	
+// 	@-o-keyframes animation-shuttle-#$id 
+// 		0%  -o-transform  $start 
+// 		50%  -o-transform  $end 
+// 		100%  -o-transform  $start 
+	
+
+// animation-fade($id,$duration,$timingfunction linear)
+// 	@each $var in $prefix
+// 		#$varanimation  animation-fade-#$id $duration
+// 		#$varanimation-iteration-count  infinite
+// 		#$varanimation-timing-function  $timingfunction
+	
+
+// animation-fade-keyframes($id,$start,$end) 
+// 	@keyframes animation-fade-#$id 
+// 		0%  opacity($start) 
+// 		50%  opacity($end) 
+// 		100%  opacity($start) 
+	
+// 	@-webkit-keyframes animation-fade-#$id 
+// 		0%  opacity($start) 
+// 		50%  opacity($end) 
+// 		100%  opacity($start) 
+	
+// 	@-moz-keyframes animation-fade-#$id 
+// 		0%  opacity($start) 
+// 		50%  opacity($end) 
+// 		100%  opacity($start) 
+	
+// 	@-ms-keyframes animation-fade-#$id 
+// 		0%  opacity($start) 
+// 		50%  opacity($end) 
+// 		100%  opacity($start) 
+	
+// 	@-o-keyframes animation-fade-#$id 
+// 		0%  opacity($start) 
+// 		50%  opacity($end) 
+// 		100%  opacity($start) 
+	
+
+
