@@ -27,21 +27,38 @@ mmw(_min-width, _max-width)
 	min-width _max-width
 
 bg(_image, _properties = )
-	w = image-size(_image)[0]
-	h = image-size(_image)[1]
+	w = image-size(_image)[0]*0.5
+	h = image-size(_image)[1]*0.5
 	background url(_image) _properties
+	background-size w h
 
 img(_image, _properties = , _display = block)
 	display _display
-	width w = image-size(_image)[0]
-	height h = image-size(_image)[1]
+	width w = image-size(_image)[0]*0.5
+	height h = image-size(_image)[1]*0.5
 	background url(_image) _properties
+	background-size w h
 	overflow hidden
 	text-indent -9999px
 
 btn(_image, _display = block)
 	display _display
-	width w = image-size(_image)[0]
+	width w = image-size(_image)[0]*0.5
+	height h = image-size(_image)[1]*0.25
+	a
+		display _display
+		width w
+		height h
+		overflow hidden
+		background url(_image) no-repeat
+		background-size w h*2
+		text-indent -9999px
+		&:hover
+			background-position 0 h*-1
+
+abtn(_image, _opacity = 0.6, _properties = , _display = block)
+	display _display
+	width w = image-size(_image)[0]*0.5
 	height h = image-size(_image)[1]*0.5
 	a
 		display _display
@@ -49,20 +66,7 @@ btn(_image, _display = block)
 		height h
 		overflow hidden
 		background url(_image) no-repeat
-		text-indent -9999px
-		&:hover
-			background-position 0 h*-1
-
-abtn(_image, _opacity = 0.6, _properties = , _display = block)
-	display _display
-	width w = image-size(_image)[0]
-	height h = image-size(_image)[1]
-	a
-		display _display
-		width w
-		height h
-		overflow hidden
-		background url(_image) no-repeat
+		background-size w h
 		text-indent -9999px
 		&:hover
 			opacity(_opacity)
