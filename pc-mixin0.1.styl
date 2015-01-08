@@ -1,4 +1,10 @@
 
+inline-block()
+	display -moz-inline-stack
+	display inline-block
+	vertical-align middle
+	zoom 1
+
 c() 
 	margin 0 auto
 
@@ -23,8 +29,10 @@ br(_bottom = 0, _right = 0)
 	right _right
 
 mmw(_min-width, _max-width)
-	max-width _min-width
-	min-width _max-width
+	max-width _max-width
+	min-width _min-width
+	width auto !important
+	width min-width
 
 bg(_image, _properties = )
 	w = image-size(_image)[0]
