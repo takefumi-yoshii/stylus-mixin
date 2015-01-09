@@ -1,3 +1,17 @@
+clear-fix()
+	&:after
+		content: "."
+		display: block
+		clear: both
+		height: 0
+		visibility: hidden
+	&
+		min-height: 1px
+	* html &
+		height: 1px;/**//*/
+		height: auto;
+		overflow: hidden;
+		/**/
 
 inline-block()
 	display -moz-inline-stack
@@ -40,7 +54,7 @@ bg(_image, _properties = )
 	background url(_image) _properties
 	background-size w h
 
-img(_image, _properties = , _display = block)
+img(_image, _properties = no-repeat, _display = block)
 	display _display
 	width w = image-size(_image)[0]*0.5
 	height h = image-size(_image)[1]*0.5
@@ -49,22 +63,7 @@ img(_image, _properties = , _display = block)
 	overflow hidden
 	text-indent -9999px
 
-btn(_image, _display = block)
-	display _display
-	width w = image-size(_image)[0]*0.5
-	height h = image-size(_image)[1]*0.25
-	a
-		display _display
-		width w
-		height h
-		overflow hidden
-		background url(_image) no-repeat
-		background-size w h*2
-		text-indent -9999px
-		&:hover
-			background-position 0 h*-1
-
-abtn(_image, _opacity = 0.6, _properties = , _display = block)
+btn(_image, _properties = no-repeat, _display = block)
 	display _display
 	width w = image-size(_image)[0]*0.5
 	height h = image-size(_image)[1]*0.5
@@ -73,7 +72,37 @@ abtn(_image, _opacity = 0.6, _properties = , _display = block)
 		width w
 		height h
 		overflow hidden
-		background url(_image) no-repeat
+		background url(_image) _properties
+		background-size w h
+		text-indent -9999px
+		&:hover
+			background-position 0 h*-1
+
+hbtn(_image, _properties = no-repeat, _display = block)
+	display _display
+	width w = image-size(_image)[0]*0.5
+	height h = image-size(_image)[1]*0.25
+	a
+		display _display
+		width w
+		height h
+		overflow hidden
+		background url(_image) _properties
+		background-size w h*2
+		text-indent -9999px
+		&:hover
+			background-position 0 h*-1
+
+abtn(_image, _opacity = 0.6, _properties = no-repeat, _display = block)
+	display _display
+	width w = image-size(_image)[0]*0.5
+	height h = image-size(_image)[1]*0.5
+	a
+		display _display
+		width w
+		height h
+		overflow hidden
+		background url(_image) _properties
 		background-size w h
 		text-indent -9999px
 		&:hover
