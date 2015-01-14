@@ -1,52 +1,4 @@
-clear-fix()
-	&:after
-		content: "."
-		display: block
-		clear: both
-		height: 0
-		visibility: hidden
-	&
-		min-height: 1px
-	* html &
-		height: 1px;/**//*/
-		height: auto;
-		overflow: hidden;
-		/**/
-
-inline-block()
-	display -moz-inline-stack
-	display inline-block
-	vertical-align middle
-	zoom 1
-
-c() 
-	margin 0 auto
-
-tl(_top = 0, _left = 0)
-	position absolute
-	top _top
-	left _left
-
-tr(_top = 0, _right = 0)
-	position absolute
-	top _top
-	right _right
-
-bl(_bottom = 0, _left = 0)
-	position absolute
-	bottom _bottom
-	left _left
-
-br(_bottom = 0, _right = 0)
-	position absolute
-	bottom _bottom
-	right _right
-
-mmw(_min-width, _max-width)
-	max-width _max-width
-	min-width _min-width
-	width auto !important
-	width min-width
+@import 'common-mixin.styl'
 
 bg(_image, _properties = no-repeat)
 	w = image-size(_image)[0]*0.5
@@ -66,6 +18,12 @@ aimg(_image, _opacity = 0.6, _properties = no-repeat, _display = block)
 	img(_image, _properties, _display)
 	&:hover
 		opacity(_opacity)
+
+fimg(_image, _opacity = 0, _duration = 0.3s, _properties = no-repeat, _display = block)
+	img(_image, _properties, _display)
+	&:hover
+		opacity _opacity
+		transition _opacity _duration linear
 
 btn(_image, _properties = no-repeat, _display = block)
 	display _display
@@ -99,7 +57,7 @@ fbtn(_image, _duration = 0.3s, _opacity = 1, _properties = no-repeat, _display =
 			opacity _opacity
 			transition opacity _duration linear
 
-sbtn(_image, _duration = 0.3s, _scale = 1.2, _properties = no-repeat, _display = block)
+sbtn(_image, _duration = 0.1s, _scale = 1.1, _properties = no-repeat, _display = block)
 	btn(_image, _properties, _display)
 	background url(_image) _properties
 	background-size @width @height*2
@@ -110,104 +68,3 @@ sbtn(_image, _duration = 0.3s, _scale = 1.2, _properties = no-repeat, _display =
 			transform scale(_scale)
 			transition all _duration linear
 			background-position 0 0
-
-
-// $prefix "-webkit-","-moz-","-ms-","-o-",""
-// animation-repeat($id,$duration,$timingfunction linear)
-// 	@each $var in $prefix
-// 		#$varanimation  animation-repeat-#$id $duration
-// 		#$varanimation-iteration-count  infinite
-// 		#$varanimation-timing-function  $timingfunction
-	
-
-// animation-repeat-keyframes($id,$start,$end) 
-// 	@keyframes animation-repeat-#$id 
-// 		0%  transform  $start 
-// 		100%  transform  $end 
-	
-// 	@-webkit-keyframes animation-repeat-#$id 
-// 		0%  -webkit-transform  $start 
-// 		100%  -webkit-transform  $end 
-	
-// 	@-moz-keyframes animation-repeat-#$id 
-// 		0%  -moz-transform  $start 
-// 		100%  -moz-transform  $end 
-	
-// 	@-ms-keyframes animation-repeat-#$id 
-// 		0%  -ms-transform  $start 
-// 		100%  -ms-transform  $end 
-	
-// 	@-o-keyframes animation-repeat-#$id 
-// 		0%  -o-transform  $start 
-// 		100%  -o-transform  $end 
-	
-
-// animation-shuttle($id,$duration,$timingfunction linear)
-// 	@each $var in $prefix
-// 		#$varanimation  animation-shuttle-#$id $duration
-// 		#$varanimation-iteration-count  infinite
-// 		#$varanimation-timing-function  $timingfunction
-	
-
-// animation-shuttle-keyframes($id,$start,$end) 
-// 	@keyframes animation-shuttle-#$id 
-// 		0%  transform  $start 
-// 		50%  transform  $end 
-// 		100%  transform  $start 
-	
-// 	@-webkit-keyframes animation-shuttle-#$id 
-// 		0%  -webkit-transform  $start 
-// 		50%  -webkit-transform  $end 
-// 		100%  -webkit-transform  $start 
-	
-// 	@-moz-keyframes animation-shuttle-#$id 
-// 		0%  -moz-transform  $start 
-// 		50%  -moz-transform  $end 
-// 		100%  -moz-transform  $start 
-	
-// 	@-ms-keyframes animation-shuttle-#$id 
-// 		0%  -ms-transform  $start 
-// 		50%  -ms-transform  $end 
-// 		100%  -ms-transform  $start 
-	
-// 	@-o-keyframes animation-shuttle-#$id 
-// 		0%  -o-transform  $start 
-// 		50%  -o-transform  $end 
-// 		100%  -o-transform  $start 
-	
-
-// animation-fade($id,$duration,$timingfunction linear)
-// 	@each $var in $prefix
-// 		#$varanimation  animation-fade-#$id $duration
-// 		#$varanimation-iteration-count  infinite
-// 		#$varanimation-timing-function  $timingfunction
-	
-
-// animation-fade-keyframes($id,$start,$end) 
-// 	@keyframes animation-fade-#$id 
-// 		0%  opacity($start) 
-// 		50%  opacity($end) 
-// 		100%  opacity($start) 
-	
-// 	@-webkit-keyframes animation-fade-#$id 
-// 		0%  opacity($start) 
-// 		50%  opacity($end) 
-// 		100%  opacity($start) 
-	
-// 	@-moz-keyframes animation-fade-#$id 
-// 		0%  opacity($start) 
-// 		50%  opacity($end) 
-// 		100%  opacity($start) 
-	
-// 	@-ms-keyframes animation-fade-#$id 
-// 		0%  opacity($start) 
-// 		50%  opacity($end) 
-// 		100%  opacity($start) 
-	
-// 	@-o-keyframes animation-fade-#$id 
-// 		0%  opacity($start) 
-// 		50%  opacity($end) 
-// 		100%  opacity($start) 
-	
-
-
