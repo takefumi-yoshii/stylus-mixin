@@ -48,7 +48,7 @@ mmw(_min-width, _max-width)
 	width auto !important
 	width _min-width
 
-bg(_image, _properties = )
+bg(_image, _properties = no-repeat)
 	w = image-size(_image)[0]
 	h = image-size(_image)[1]
 	background url(_image) _properties
@@ -57,14 +57,20 @@ img(_image, _properties = no-repeat, _display = block)
 	display _display
 	width w = image-size(_image)[0]
 	height h = image-size(_image)[1]
-	background url(_image) _properties
 	overflow hidden
 	text-indent -9999px
+	bg(_image, _properties)
 
 aimg(_image, _opacity = 0.6, _properties = no-repeat, _display = block)
 	img(_image, _properties, _display)
 	&:hover
 		opacity(_opacity)
+
+fimg(_image, _opacity = 0, _duration = 0.3s, _properties = no-repeat, _display = block)
+	img(_image, _properties, _display)
+	&:hover
+		opacity _opacity
+		transition _opacity _duration linear
 
 btn(_image, _properties = no-repeat, _display = block)
 	display _display
@@ -86,25 +92,27 @@ abtn(_image, _opacity = 1.0, _properties = no-repeat, _display = block)
 		&:hover
 			opacity(_opacity)
 
-fbtn(_image, _properties = no-repeat, _display = block)
+fbtn(_image, _duration = 0.3s, _opacity = 1, _properties = no-repeat, _display = block)
 	btn(_image, _properties, _display)
 	background url(_image) _properties
 	a
 		opacity 0
-		transition opacity 0.3s linear
+		transition opacity _duration linear
 		&:hover
-			opacity 1
-			transition opacity 0.3s linear
+			opacity _opacity
+			transition opacity _duration linear
+			background-position 0 0
 
-sbtn(_image, _properties = no-repeat, _display = block)
+sbtn(_image, _duration = 0.3s, _scale = 1.2, _properties = no-repeat, _display = block)
 	btn(_image, _properties, _display)
 	background url(_image) _properties
 	a
-		opacity 0
-		transition opacity 0.3s linear
+		transform scale(1)
+		transition all _duration linear
 		&:hover
-			opacity 1
-			transition opacity 0.3s linear
+			transform scale(_scale)
+			transition all _duration linear
+			background-position 0 0
 
 
 
