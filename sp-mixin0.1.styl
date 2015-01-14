@@ -63,22 +63,12 @@ img(_image, _properties = no-repeat, _display = block)
 	overflow hidden
 	text-indent -9999px
 
-btn(_image, _properties = no-repeat, _display = block)
-	display _display
-	width w = image-size(_image)[0]*0.5
-	height h = image-size(_image)[1]*0.5
-	a
-		display _display
-		width w
-		height h
-		overflow hidden
-		background url(_image) _properties
-		background-size w h
-		text-indent -9999px
-		&:hover
-			background-position 0 h*-1
+aimg(_image, _opacity = 0.6, _properties = no-repeat, _display = block)
+	img(_image, _properties, _display)
+	&:hover
+		opacity(_opacity)
 
-hbtn(_image, _properties = no-repeat, _display = block)
+btn(_image, _properties = no-repeat, _display = block)
 	display _display
 	width w = image-size(_image)[0]*0.5
 	height h = image-size(_image)[1]*0.25
@@ -93,23 +83,24 @@ hbtn(_image, _properties = no-repeat, _display = block)
 		&:hover
 			background-position 0 h*-1
 
-abtn(_image, _opacity = 0.6, _properties = no-repeat, _display = block)
-	display _display
-	width w = image-size(_image)[0]*0.5
-	height h = image-size(_image)[1]*0.5
+abtn(_image, _opacity = 1.0, _properties = no-repeat, _display = block)
+	btn(_image, _properties, _display)
 	a
-		display _display
-		width w
-		height h
-		overflow hidden
-		background url(_image) _properties
-		background-size w h
-		text-indent -9999px
 		&:hover
 			opacity(_opacity)
 
-// fbtn
-// sbtn
+fbtn(_image, _properties = no-repeat, _display = block)
+	btn(_image, _properties, _display)
+	background url(_image) _properties
+	background-size @width @height*2
+	a
+		opacity 0
+		transition opacity 0.3s linear
+		&:hover
+			opacity 1
+			transition opacity 0.3s linear
+
+
 
 
 // $prefix "-webkit-","-moz-","-ms-","-o-",""
