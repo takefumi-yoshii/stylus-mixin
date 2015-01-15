@@ -26,6 +26,9 @@ miw()
 maw()
 	max-width _px(arguments)
 
+mmw(_min, _max)
+	min-max-width(_min, _max)
+
 m()
 	_buf = null
 	for n in arguments
@@ -130,31 +133,31 @@ tea(v)
 	if v == r
 		text-align right
 
-bo(v)
+bo()
 	_buf = null
 	for n in arguments
 		push(_buf, _px(n))
 	border _buf
 
-bol(v)
+bol()
 	_buf = null
 	for n in arguments
 		push(_buf, _px(n))
 	border-left _buf
 
-bor(v)
+bor()
 	_buf = null
 	for n in arguments
 		push(_buf, _px(n))
 	border-right _buf
 
-bot(v)
+bot()
 	_buf = null
 	for n in arguments
 		push(_buf, _px(n))
 	border-top _buf
 
-bob(v)
+bob()
 	_buf = null
 	for n in arguments
 		push(_buf, _px(n))
