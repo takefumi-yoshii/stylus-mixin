@@ -4,13 +4,15 @@ _px(v)
 	else
 		v
 
-d(v)
+di(v)
 	if v == b
 		display block
 	if v == i
 		display inline
 	if v == ib
 		inline-block()
+	if v == n
+		display none
 
 w(v)
 	width _px(v)
@@ -18,17 +20,53 @@ w(v)
 h(v)
 	height _px(v)
 
+miw()
+	min-width _px(arguments)
+
+maw()
+	max-width _px(arguments)
+
 m()
 	_buf = null
 	for n in arguments
 		push(_buf, _px(n))
 	margin _buf
 
+mt()
+	margin-top _px(arguments)
+
+mb()
+	margin-bottom _px(arguments)
+
+ml()
+	margin-left _px(arguments)
+
+mr()
+	margin-right _px(arguments)
+
 p()
 	_buf = null
 	for n in arguments
 		push(_buf, _px(n))
-	pading _buf
+	padding _buf
+
+pt()
+	padding-top _px(arguments)
+
+pb()
+	padding-bottom _px(arguments)
+
+pl()
+	padding-left _px(arguments)
+
+pr()
+	padding-right _px(arguments)
+
+fl(v)
+	if v == l
+		float left
+	if v == r
+		float right
 
 po(v)
 	if v == r
@@ -41,27 +79,44 @@ po(v)
 		position static
 
 t(v)
-	top v
+	top _px(v)
 
 b(v)
-	bottom v
+	bottom _px(v)
 
 l(v)
-	left v
+	left _px(v)
 
 r(v)
-	right v
+	right _px(v)
 
 lh(v)
 	line-height _px(v)
 
-tei()
-	text-indent arguments
+tei(v)
+	text-indent _px(v)
 
-ted()
-	text-decoration arguments
+ovf(v)
+	if v == h
+		overflow hidden
+	if v == a
+		overflow auto
 
-co()
+ted(v)
+	if v == n
+		text-decoration none
+	if v == u
+		text-decoration underline
+	else
+		text-decoration arguments
+
+fow()
+	font-weight arguments
+
+fsz()
+	font-size _px(arguments)
+
+col()
 	if length(arguments) == 1
 		color arguments
 	else
@@ -96,6 +151,9 @@ bg()
 		_h = image-size(_url)[1] * image-pixel-ratio
 		background-size _w _h
 
+bas()
+	background-size arguments
+
 im(_image, _properties = no-repeat, _display = block)
 	img(_image, _properties, _display)
 
@@ -117,3 +175,12 @@ bl(_bottom = 0, _left = 0)
 
 br(_bottom = 0, _right = 0)
 	bottom-right(_bottom, _right)
+
+clf()
+	clear-fix()
+
+ffg()
+	font-family 'Hiragino Kaku Gothic ProN' Meiryo sans-serif
+
+ffs()
+	font-family 'Hiragino Mincho ProN' serif
