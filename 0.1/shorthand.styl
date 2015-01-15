@@ -130,7 +130,37 @@ tea(v)
 	if v == r
 		text-align right
 
+bo(v)
+	_buf = null
+	for n in arguments
+		push(_buf, _px(n))
+	border _buf
+
+bol(v)
+	_buf = null
+	for n in arguments
+		push(_buf, _px(n))
+	border-left _buf
+
 bor(v)
+	_buf = null
+	for n in arguments
+		push(_buf, _px(n))
+	border-right _buf
+
+bot(v)
+	_buf = null
+	for n in arguments
+		push(_buf, _px(n))
+	border-top _buf
+
+bob(v)
+	_buf = null
+	for n in arguments
+		push(_buf, _px(n))
+	border-bottom _buf
+
+bra(v)
 	border-radius _px(v)
 
 z(v)
@@ -150,6 +180,9 @@ bg()
 		_w = image-size(_url)[0] * image-pixel-ratio
 		_h = image-size(_url)[1] * image-pixel-ratio
 		background-size _w _h
+
+bap()
+	background-position _px(arguments[0]) _px(arguments[1])
 
 bas()
 	background-size arguments
