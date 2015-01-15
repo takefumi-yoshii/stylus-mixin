@@ -1,0 +1,100 @@
+_px(v)
+	if unit(v) == ''
+		unit(v, 'px')
+	else
+		v
+
+d(v)
+	if v == b
+		display block
+	if v == i
+		display inline
+	if v == ib
+		inline-block()
+
+w(v)
+	width _px(v)
+
+h(v)
+	height _px(v)
+
+m()
+	_buf = null
+	for n in arguments
+		push(_buf, _px(n))
+	margin _buf
+
+p()
+	_buf = null
+	for n in arguments
+		push(_buf, _px(n))
+	pading _buf
+
+po(v)
+	if v == r
+		position relative
+	if v == a
+		position absolute
+	if v == f
+		position fixed
+	if v == s
+		position static
+
+t(v)
+	top v
+
+b(v)
+	bottom v
+
+l(v)
+	left v
+
+r(v)
+	right v
+
+lh(v)
+	line-height _px(v)
+
+tei()
+	text-indent arguments
+
+ted()
+	text-decoration arguments
+
+co()
+	if length(arguments) == 1
+		color arguments
+	else
+		color rgba(arguments)
+
+tea(v)
+	if v == c
+		text-align center
+	if v == l
+		text-align left
+	if v == r
+		text-align right
+
+bor(v)
+	border-radius _px(v)
+
+z(v)
+	z-index v
+
+bg()
+	_url = ''
+	_buf = null
+	for n in arguments
+		if type(n) == 'string'
+			_url = n
+			push(_buf, url(_url))
+		else
+			push(_buf, n)
+	background _buf
+	if _url != ''
+		_w = image-size(_url)[0] * image-pixel-ratio
+		_h = image-size(_url)[1] * image-pixel-ratio
+		background-size _w _h
+
+im(_image, _properties = no-repeat, _display = block)
+	img(_image, _properties, _display)

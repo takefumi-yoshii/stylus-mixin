@@ -1,0 +1,38 @@
+_px(v)
+	if unit(v) == ''
+		unit(v, 'px')
+	else
+		v
+
+wh(_w, _h)
+	width _px(_w)
+	height _px(_h)
+
+c() 
+	margin 0 auto
+
+tl(_top = 0, _left = 0)
+	position absolute
+	top _top
+	left _left
+
+tr(_top = 0, _right = 0)
+	position absolute
+	top _top
+	right _right
+
+bl(_bottom = 0, _left = 0)
+	position absolute
+	bottom _bottom
+	left _left
+
+br(_bottom = 0, _right = 0)
+	position absolute
+	bottom _bottom
+	right _right
+
+mmw(_min-width, _max-width)
+	max-width _max-width
+	min-width _min-width
+	width auto !important
+	width _min-width

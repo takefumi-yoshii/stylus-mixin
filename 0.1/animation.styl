@@ -1,63 +1,19 @@
-clear-fix()
-	&:after
-		content: "."
-		display: block
-		clear: both
-		height: 0
-		visibility: hidden
-	&
-		min-height: 1px
-	* html &
-		height: 1px;/**//*/
-		height: auto;
-		overflow: hidden;
-		/**/
+_px(v)
+	if unit(v) == ''
+		unit(v, 'px')
+	else
+		v
 
-inline-block()
-	display -moz-inline-stack
-	display inline-block
-	vertical-align middle
-	zoom 1
-
-c() 
-	margin 0 auto
-
-tl(_top = 0, _left = 0)
-	position absolute
-	top _top
-	left _left
-
-tr(_top = 0, _right = 0)
-	position absolute
-	top _top
-	right _right
-
-bl(_bottom = 0, _left = 0)
-	position absolute
-	bottom _bottom
-	left _left
-
-br(_bottom = 0, _right = 0)
-	position absolute
-	bottom _bottom
-	right _right
-
-mmw(_min-width, _max-width)
-	max-width _max-width
-	min-width _min-width
-	width auto !important
-	width _min-width
-
-cube(_width, _height, _perspective = 300px, _duration = .3s)
+cube(_width, _height, _perspective, _duration = .3s)
 	display block
-	width _width
-	height _height
+	width _px(_width)
+	height _px(_height)
 	position relative
-	perspective _perspective
+	perspective _px(_perspective)
 	>*
 		display block
-		width _width
-		height _height
+		width _px(_width)
+		height _px(_height)
 		position absolute
 		transition all _duration
 		pointer-events none
@@ -75,9 +31,9 @@ xcube(_width, _height, _perspective = 300px, _duration = .3s, _direction = true)
 	>
 		&:nth-child(1)
 			transform rotateX(0deg)
-			transform-origin 50% 50% _height*-0.5
+			transform-origin 50% 50% _px(_height)*-0.5
 		&:nth-child(2)
-			transform-origin 50% 50% _height*-0.5
+			transform-origin 50% 50% _px(_height)*-0.5
 			if _direction
 				transform rotateX(90deg)
 			else
@@ -95,9 +51,9 @@ ycube(_width, _height, _perspective = 300px, _duration = .3s, _direction = true)
 	>
 		&:nth-child(1)
 			transform rotateY(0deg)
-			transform-origin 50% 50% _width*-0.5
+			transform-origin 50% 50% _px(_width)*-0.5
 		&:nth-child(2)
-			transform-origin 50% 50% _width*-0.5
+			transform-origin 50% 50% _px(_width)*-0.5
 			if _direction
 				transform rotateY(90deg)
 			else

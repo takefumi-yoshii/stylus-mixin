@@ -1,18 +1,12 @@
-@import 'common-mixin.styl'
-
-bg(_image, _properties = no-repeat)
-	w = image-size(_image)[0]*0.5
-	h = image-size(_image)[1]*0.5
-	background url(_image) _properties
-	background-size w h
+image-pixel-ratio = 1/image-pixel-ratio
 
 img(_image, _properties = no-repeat, _display = block)
 	display _display
-	width w = image-size(_image)[0]*0.5
-	height h = image-size(_image)[1]*0.5
+	width w = image-size(_image)[0] * image-pixel-ratio
+	height h = image-size(_image)[1] * image-pixel-ratio
 	overflow hidden
 	text-indent -9999px
-	bg(_image, _properties)
+	background url(_image) _properties
 
 aimg(_image, _opacity = 0.6, _properties = no-repeat, _display = block)
 	img(_image, _properties, _display)
@@ -27,18 +21,18 @@ fimg(_image, _opacity = 0, _duration = 0.3s, _properties = no-repeat, _display =
 
 btn(_image, _properties = no-repeat, _display = block)
 	display _display
-	width w = image-size(_image)[0]*0.5
-	height h = image-size(_image)[1]*0.25
+	width _w = image-size(_image)[0] * image-pixel-ratio
+	height _h = image-size(_image)[1] * image-pixel-ratio *0.5
 	a
 		display _display
-		width w
-		height h
+		width _w
+		height _h
 		overflow hidden
 		background url(_image) _properties
-		background-size w h*2
+		background-size _w _h*2
 		text-indent -9999px
 		&:hover
-			background-position 0 h*-1
+			background-position 0 _h*-1
 
 abtn(_image, _opacity = 1.0, _properties = no-repeat, _display = block)
 	btn(_image, _properties, _display)
