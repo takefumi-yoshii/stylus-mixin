@@ -3,141 +3,65 @@ _px(v)
 		unit(v, 'px')
 	else
 		v
+// ------------------------------------------------------------
+// @ A
 
-di(v)
-	if v == b
-		display block
-	if v == i
-		display inline
-	if v == ib
-		inline-block()
-	if v == n
-		display none
-
-w(v)
-	width _px(v)
-
-h(v)
-	height _px(v)
-
-miw()
-	min-width _px(arguments)
-
-maw()
-	max-width _px(arguments)
-
-mmw(_min, _max)
-	min-max-width(_min, _max)
-
-m()
-	_buf = null
-	for n in arguments
-		push(_buf, _px(n))
-	margin _buf
-
-mt()
-	margin-top _px(arguments)
-
-mb()
-	margin-bottom _px(arguments)
-
-ml()
-	margin-left _px(arguments)
-
-mr()
-	margin-right _px(arguments)
-
-p()
-	_buf = null
-	for n in arguments
-		push(_buf, _px(n))
-	padding _buf
-
-pt()
-	padding-top _px(arguments)
-
-pb()
-	padding-bottom _px(arguments)
-
-pl()
-	padding-left _px(arguments)
-
-pr()
-	padding-right _px(arguments)
-
-fl(v)
-	if v == l
-		float left
-	if v == r
-		float right
-
-po(v)
-	if v == r
-		position relative
-	if v == a
-		position absolute
-	if v == f
-		position fixed
-	if v == s
-		position static
-
-t(v)
-	top _px(v)
+// ------------------------------------------------------------
+// @ B
 
 b(v)
 	bottom _px(v)
 
-l(v)
-	left _px(v)
+bg()
+	_url = ''
+	_buf = null
+	for n in arguments
+		if type(n) == 'string'
+			_url = n
+			push(_buf, url(_url))
+		else
+			push(_buf, n)
+	background _buf
+	if _url != ''
+		_w = image-size(_url)[0] * image-pixel-ratio
+		_h = image-size(_url)[1] * image-pixel-ratio
+		background-size _w _h
 
-r(v)
-	right _px(v)
+bl(_bottom = 0, _left = 0)
+	bottom-left(_bottom, _left)
 
-lh(v)
-	line-height _px(v)
+br(_bottom = 0, _right = 0)
+	bottom-right(_bottom, _right)
 
-tei(v)
-	text-indent _px(v)
+bas()
+	background-size arguments
 
-ovf(v)
-	if v == h
-		overflow hidden
-	if v == a
-		overflow auto
+baa()
+	background-attachment arguments
 
-ted(v)
-	if v == n
-		text-decoration none
-	if v == u
-		text-decoration underline
-	else
-		text-decoration arguments
+bac()
+	background-color arguments
 
-fow()
-	font-weight arguments
+bai()
+	background-image arguments
 
-fsz()
-	font-size _px(arguments)
+bap()
+	background-position _px(arguments[0]) _px(arguments[1])
 
-col()
-	if length(arguments) == 1
-		color arguments
-	else
-		color rgba(arguments)
-
-tea(v)
-	if v == c
-		text-align center
-	if v == l
-		text-align left
-	if v == r
-		text-align right
+bar()
+	background-repeat arguments
 
 bo()
 	_buf = null
 	for n in arguments
 		push(_buf, _px(n))
 	border _buf
+
+bob()
+	_buf = null
+	for n in arguments
+		push(_buf, _px(n))
+	border-bottom _buf
 
 bol()
 	_buf = null
@@ -157,48 +81,186 @@ bot()
 		push(_buf, _px(n))
 	border-top _buf
 
-bob()
-	_buf = null
-	for n in arguments
-		push(_buf, _px(n))
-	border-bottom _buf
+boc()
+	border-collapse arguments
 
 bra(v)
 	border-radius _px(v)
 
-z(v)
-	z-index v
+// ------------------------------------------------------------
+// @ C
 
-bg()
-	_url = ''
-	_buf = null
-	for n in arguments
-		if type(n) == 'string'
-			_url = n
-			push(_buf, url(_url))
-		else
-			push(_buf, n)
-	background _buf
-	if _url != ''
-		_w = image-size(_url)[0] * image-pixel-ratio
-		_h = image-size(_url)[1] * image-pixel-ratio
-		background-size _w _h
+c()
+	center()
 
-bap()
-	background-position _px(arguments[0]) _px(arguments[1])
+cl()
+	clear arguments
 
-bas()
-	background-size arguments
+clf()
+	clear-fix()
+
+col()
+	if length(arguments) == 1
+		color arguments
+	else
+		color rgba(arguments)
+
+cur()
+	cursor arguments
+
+// ------------------------------------------------------------
+// @ D
+
+di(v)
+	if v == b
+		display block
+	if v == i
+		display inline
+	if v == ib
+		inline-block()
+	if v == n
+		display none
+
+// ------------------------------------------------------------
+// @ E
+
+// ------------------------------------------------------------
+// @ F
+
+fl(v)
+	if v == l
+		float left
+	if v == r
+		float right
+
+ffg()
+	font-family 'Hiragino Kaku Gothic ProN' Meiryo sans-serif
+
+ffs()
+	font-family 'Hiragino Mincho ProN' serif
+
+fsz()
+	font-size _px(arguments)
+
+fow()
+	font-weight arguments
+
+// ------------------------------------------------------------
+// @ G
+// ------------------------------------------------------------
+// @ H
+
+h(v)
+	height _px(v)
+
+// ------------------------------------------------------------
+// @ I
 
 im(_image, _properties = no-repeat, _display = block)
 	img(_image, _properties, _display)
 
-wh(_w, _h)
-	width _px(_w)
-	height _px(_h)
+// ------------------------------------------------------------
+// @ J
+// ------------------------------------------------------------
+// @ K
+// ------------------------------------------------------------
+// @ L
 
-c()
-	center()
+l(v)
+	left _px(v)
+
+lh(v)
+	line-height _px(v)
+
+// ------------------------------------------------------------
+// @ M
+
+m()
+	_buf = null
+	for n in arguments
+		push(_buf, _px(n))
+	margin _buf
+
+mt()
+	margin-top _px(arguments)
+
+mb()
+	margin-bottom _px(arguments)
+
+ml()
+	margin-left _px(arguments)
+
+mr()
+	margin-right _px(arguments)
+
+miw()
+	min-width _px(arguments)
+
+maw()
+	max-width _px(arguments)
+
+mmw(_min, _max)
+	min-max-width(_min, _max)
+
+// ------------------------------------------------------------
+// @ N
+// ------------------------------------------------------------
+// @ O
+
+ovf(v)
+	if v == h
+		overflow hidden
+	if v == a
+		overflow auto
+
+// ------------------------------------------------------------
+// @ P
+
+p()
+	_buf = null
+	for n in arguments
+		push(_buf, _px(n))
+	padding _buf
+
+
+pb()
+	padding-bottom _px(arguments)
+
+pl()
+	padding-left _px(arguments)
+
+pr()
+	padding-right _px(arguments)
+
+pt()
+	padding-top _px(arguments)
+
+po(v)
+	if v == r
+		position relative
+	if v == a
+		position absolute
+	if v == f
+		position fixed
+	if v == s
+		position static
+
+// ------------------------------------------------------------
+// @ Q
+// ------------------------------------------------------------
+// @ R
+
+r(v)
+	right _px(v)
+
+// ------------------------------------------------------------
+// @ S
+
+// ------------------------------------------------------------
+// @ T
+
+t(v)
+	top _px(v)
 
 tl(_top = 0, _left = 0)
 	top-left(_top, _left)
@@ -206,17 +268,51 @@ tl(_top = 0, _left = 0)
 tr(_top = 0, _right = 0)
 	top-right(_top, _right)
 
-bl(_bottom = 0, _left = 0)
-	bottom-left(_bottom, _left)
+tea(v)
+	if v == c
+		text-align center
+	if v == l
+		text-align left
+	if v == r
+		text-align right
 
-br(_bottom = 0, _right = 0)
-	bottom-right(_bottom, _right)
+ted(v)
+	if v == n
+		text-decoration none
+	if v == u
+		text-decoration underline
+	else
+		text-decoration arguments
 
-clf()
-	clear-fix()
+tei(v)
+	text-indent _px(v)
 
-ffg()
-	font-family 'Hiragino Kaku Gothic ProN' Meiryo sans-serif
+tes()
+	text-shadow arguments
 
-ffs()
-	font-family 'Hiragino Mincho ProN' serif
+// ------------------------------------------------------------
+// @ U
+// ------------------------------------------------------------
+// @ V
+// ------------------------------------------------------------
+// @ W
+
+w(v)
+	width _px(v)
+
+wh(_w, _h)
+	width _px(_w)
+	height _px(_h)
+
+// ------------------------------------------------------------
+// @ X
+// ------------------------------------------------------------
+// @ Y
+// ------------------------------------------------------------
+// @ Z
+
+z(v)
+	z-index v
+
+
+
