@@ -1,5 +1,9 @@
 image-pixel-ratio = 1 / image-pixel-ratio
 
+hover-alpha(_alpha = 0.6)
+	&:hover
+		opacity(_alpha)
+
 img(_image, _properties = no-repeat, _display = block)
 	display _display
 	width w = image-size(_image)[0] * image-pixel-ratio
