@@ -1,6 +1,9 @@
 _px(v)
-	if unit(v) == ''
-		unit(v, 'px')
+	if type(v) == 'unit'
+		if unit(v) == ''
+			unit(v, 'px')
+		else
+			v
 	else
 		v
 // ------------------------------------------------------------
@@ -80,6 +83,12 @@ bot()
 	for n in arguments
 		push(_buf, _px(n))
 	border-top _buf
+
+bos()
+	_buf = null
+	for n in arguments
+		push(_buf, _px(n))
+	box-shadow _buf
 
 boc()
 	border-collapse arguments
