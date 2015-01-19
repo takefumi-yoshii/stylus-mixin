@@ -25,7 +25,7 @@ bg()
 		else
 			push(_buf, n)
 	background _buf
-	if _url != ''
+	if _url != '' && image-pixel-ratio != 1
 		_w = image-size(_url)[0] * image-pixel-ratio
 		_h = image-size(_url)[1] * image-pixel-ratio
 		background-size _w _h

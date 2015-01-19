@@ -11,7 +11,8 @@ img(_image, _properties = no-repeat, _display = block)
 	overflow hidden
 	text-indent -9999px
 	background url(_image) _properties
-	background-size w h
+	if image-pixel-ratio != 1
+		background-size w h
 
 aimg(_image, _opacity = 0.6, _properties = no-repeat, _display = block)
 	img(_image, _properties, _display)
@@ -34,7 +35,8 @@ btn(_image, _properties = no-repeat, _display = block)
 		height _h
 		overflow hidden
 		background url(_image) _properties
-		background-size _w _h*2
+		if image-pixel-ratio != 1
+			background-size _w _h*2
 		text-indent -9999px
 		&:hover
 			background-position 0 _h*-1
