@@ -19,8 +19,9 @@ aimg(_image, _opacity = 0.6, _properties = no-repeat, _display = block)
 	&:hover
 		opacity(_opacity)
 
-fimg(_image, _opacity = 0, _duration = 0.3s, _properties = no-repeat, _display = block)
+fimg(_image, _opacity = 0.6, _duration = 0.3s, _properties = no-repeat, _display = block)
 	img(_image, _properties, _display)
+	opacity 1
 	&:hover
 		opacity _opacity
 		transition _opacity _duration linear
@@ -41,8 +42,9 @@ btn(_image, _properties = no-repeat, _display = block)
 		&:hover
 			background-position 0 _h*-1
 
-abtn(_image, _opacity = 1.0, _properties = no-repeat, _display = block)
+abtn(_image, _opacity = 0.6, _properties = no-repeat, _display = block)
 	btn(_image, _properties, _display)
+	opacity 1
 	a
 		&:hover
 			opacity(_opacity)
