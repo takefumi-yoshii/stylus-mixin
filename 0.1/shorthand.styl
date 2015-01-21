@@ -6,6 +6,25 @@ _px(v)
 			v
 	else
 		v
+
+_second(v)
+	if type(v) == 'unit'
+		if unit(v) == ''
+			unit(v, 's')
+		else
+			v
+	else
+		v
+
+_degree(v)
+	if type(v) == 'unit'
+		if unit(v) == ''
+			unit(v, 'deg')
+		else
+			v
+	else
+		v
+
 // ------------------------------------------------------------
 // @ A
 
@@ -131,7 +150,10 @@ di(v)
 		display none
 
 dur()
-	transition-duration arguments
+	transition-duration _second(arguments)
+
+del()
+	transition-delay _second(arguments)
 
 // ------------------------------------------------------------
 // @ E
@@ -266,7 +288,7 @@ r(v)
 	right _px(v)
 
 rot()
-	transform rotate(arguments)
+	transform rotate(_degree(arguments))
 
 // ------------------------------------------------------------
 // @ S
