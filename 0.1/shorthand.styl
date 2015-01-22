@@ -247,6 +247,9 @@ ovf(v)
 	if v == a
 		overflow auto
 
+opa()
+	opacity arguments
+
 // ------------------------------------------------------------
 // @ P
 
@@ -279,6 +282,9 @@ po(v)
 	if v == s
 		position static
 
+pit()
+	transform rotateX(_degree(arguments))
+
 // ------------------------------------------------------------
 // @ Q
 // ------------------------------------------------------------
@@ -290,8 +296,23 @@ r(v)
 rot()
 	transform rotate(_degree(arguments))
 
+rol()
+	transform rotateZ(_degree(arguments))
+
 // ------------------------------------------------------------
 // @ S
+
+sca()
+	transform scale(arguments)
+
+scx()
+	transform scaleX(arguments)
+
+scy()
+	transform scaleY(arguments)
+
+scz()
+	transform scaleZ(arguments)
 
 // ------------------------------------------------------------
 // @ T
@@ -304,6 +325,15 @@ tl(_top = 0, _left = 0)
 
 tr(_top = 0, _right = 0)
 	top-right(_top, _right)
+
+tx()
+	transform translateX(_px(arguments))
+
+ty()
+	transform translateY(_px(arguments))
+
+tz()
+	transform translateZ(_px(arguments))
 
 tea(v)
 	if v == c
@@ -343,8 +373,13 @@ wh(_w, _h)
 
 // ------------------------------------------------------------
 // @ X
+
 // ------------------------------------------------------------
 // @ Y
+
+yow()
+	transform rotateY(_degree(arguments))
+
 // ------------------------------------------------------------
 // @ Z
 
