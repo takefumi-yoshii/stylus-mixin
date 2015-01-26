@@ -233,6 +233,13 @@ miw()
 maw()
 	max-width _px(arguments)
 
+mih()
+	min-height _px(arguments)
+
+mah()
+	max-height _px(arguments)
+
+
 mmw(_min, _max)
 	min-max-width(_min, _max)
 
@@ -334,6 +341,9 @@ ty()
 
 tz()
 	transform translateZ(_px(arguments))
+
+tpr()
+	transition-property arguments
 
 tea(v)
 	if v == c
