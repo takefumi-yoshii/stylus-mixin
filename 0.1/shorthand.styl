@@ -251,8 +251,10 @@ mmw(_min, _max)
 ovf(v)
 	if v == h
 		overflow hidden
-	if v == a
+	else if v == a
 		overflow auto
+	else 
+		overflow v
 
 opa()
 	opacity arguments
