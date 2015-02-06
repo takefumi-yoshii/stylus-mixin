@@ -1,0 +1,73 @@
+image-pixel-ratio = 1 / image-pixel-ratio
+
+hover-alpha(_alpha = 0.6)
+	&:hover
+		opacity(_alpha)
+
+hover-scale(_scale = 1.2)
+	&:hover
+		transform scale(_scale)
+
+img()
+	_image = ''
+	_buf = null
+	for n in arguments
+		if type(n) == 'string'
+			_image = n
+			push(_buf, url(_image))
+		else
+			push(_buf, n)
+
+	display block
+	width w = image-size(_image)[0] * image-pixel-ratio
+	height h = image-size(_image)[1] * image-pixel-ratio
+	overflow hidden
+	text-indent -9999px
+	background _buf
+	background-repeat no-repeat
+	if image-pixel-ratio != 1
+		background-size w h
+
+aimg()
+	img(arguments)
+	hover-alpha()
+
+simg()
+	img(arguments)
+	hover-scale()
+
+btn()
+	_image = ''
+	_buf = null
+	for n in arguments
+		if type(n) == 'string'
+			_image = n
+			push(_buf, url(_image))
+		else
+			push(_buf, n)
+			
+	display block
+	width _w = image-size(_image)[0] * image-pixel-ratio
+	height _h = image-size(_image)[1] * image-pixel-ratio *0.5
+	a
+		display block
+		width _w
+		height _h
+		overflow hidden
+		text-indent -9999px
+		background _buf
+		background-repeat no-repeat
+		if image-pixel-ratio != 1
+			background-size _w _h*2
+		&:hover
+			background-position 0 _h*-1
+
+abtn()
+	btn(arguments)
+	a
+		hover-alpha()
+
+sbtn()
+	btn(arguments)
+	a
+		hover-scale()

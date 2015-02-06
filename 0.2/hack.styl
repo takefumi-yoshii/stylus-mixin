@@ -1,0 +1,25 @@
+clear-fix()
+	&:after
+		content: "."
+		display: block
+		clear: both
+		height: 0
+		visibility: hidden
+	&
+		min-height: 1px
+	* html &
+		height: 1px;/**//*/
+		height: auto;
+		overflow: hidden;
+		/**/
+
+inline-block()
+	display -moz-inline-stack
+	display inline-block
+	vertical-align middle
+	zoom 1
+	
+touch-scroll()
+	overflow scroll
+	-webkit-overflow-scrolling touch
+	-webkit-transform translateZ(0px)

@@ -4,6 +4,10 @@ hover-alpha(_alpha = 0.6)
 	&:hover
 		opacity(_alpha)
 
+hover-scale(_scale = 1.2)
+	&:hover
+		transform scale(_scale)
+
 img(_image, _properties = no-repeat, _display = block)
 	display _display
 	width w = image-size(_image)[0] * image-pixel-ratio

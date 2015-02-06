@@ -166,6 +166,8 @@ fl(v)
 		float left
 	if v == r
 		float right
+	else
+		float arguments
 
 ffg()
 	font-family 'Hiragino Kaku Gothic ProN' Meiryo sans-serif
@@ -176,8 +178,11 @@ ffs()
 fsz()
 	font-size _px(arguments)
 
-fow()
-	font-weight arguments
+fow(v)
+	if v == b
+		font-weight bolder
+	else
+		font-weight arguments
 
 // ------------------------------------------------------------
 // @ G
@@ -196,8 +201,8 @@ hs()
 // ------------------------------------------------------------
 // @ I
 
-im(_image, _properties = no-repeat, _display = block)
-	img(_image, _properties, _display)
+im()
+	img(arguments)
 
 // ------------------------------------------------------------
 // @ J
@@ -296,6 +301,8 @@ po(v)
 		position fixed
 	if v == s
 		position static
+	else
+		position arguments
 
 pit()
 	transform rotateX(_degree(arguments))
@@ -366,6 +373,8 @@ tea(v)
 		text-align left
 	if v == r
 		text-align right
+	else
+		text-align arguments
 
 ted(v)
 	if v == n
