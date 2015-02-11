@@ -19,8 +19,8 @@ img()
 			push(_buf, n)
 
 	display block
-	width w = image-size(_image)[0] * image-pixel-ratio
-	height h = image-size(_image)[1] * image-pixel-ratio
+	width w = ceil( image-size(_image)[0] * image-pixel-ratio )
+	height h = ceil( image-size(_image)[1] * image-pixel-ratio )
 	overflow hidden
 	text-indent -9999px
 	background _buf
@@ -47,8 +47,8 @@ btn()
 			push(_buf, n)
 			
 	display block
-	width _w = image-size(_image)[0] * image-pixel-ratio
-	height _h = image-size(_image)[1] * image-pixel-ratio *0.5
+	width _w = ceil( image-size(_image)[0] * image-pixel-ratio )
+	height _h = ceil( image-size(_image)[1] * image-pixel-ratio *0.5 )
 	a
 		display block
 		width _w
