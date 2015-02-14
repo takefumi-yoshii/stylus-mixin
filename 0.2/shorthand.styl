@@ -142,11 +142,11 @@ cur()
 di(v)
 	if v == b
 		display block
-	if v == i
+	else if v == i
 		display inline
-	if v == ib
+	else if v == ib
 		inline-block()
-	if v == n
+	else if v == n
 		display none
 
 dur()
@@ -164,7 +164,7 @@ del()
 fl(v)
 	if v == l
 		float left
-	if v == r
+	else if v == r
 		float right
 	else
 		float arguments
@@ -295,11 +295,11 @@ pt()
 po(v)
 	if v == r
 		position relative
-	if v == a
+	else if v == a
 		position absolute
-	if v == f
+	else if v == f
 		position fixed
-	if v == s
+	else if v == s
 		position static
 	else
 		position arguments
@@ -367,11 +367,12 @@ tor()
 	transform-origin arguments
 
 tea(v)
+	
 	if v == c
 		text-align center
-	if v == l
+	else if v == l
 		text-align left
-	if v == r
+	else if v == r
 		text-align right
 	else
 		text-align arguments
@@ -379,7 +380,7 @@ tea(v)
 ted(v)
 	if v == n
 		text-decoration none
-	if v == u
+	else if v == u
 		text-decoration underline
 	else
 		text-decoration arguments
