@@ -71,3 +71,9 @@ sbtn()
 	btn(arguments)
 	a
 		hover-scale()
+		
+circle()
+	if @width
+		border-radius @width*0.5
+	else if @height
+		border-radius @height*0.5
