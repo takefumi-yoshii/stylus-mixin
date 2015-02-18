@@ -49,6 +49,28 @@ bg()
 		_h = image-size(_url)[1] * image-pixel-ratio
 		background-size _w _h
 
+bg2()
+	_url = ''
+	_url2 = ''
+	_buf = null
+	for n in arguments
+		if type(n) == 'string'
+			_url = n
+			_ext = extname(n)
+			_url2 = pathjoin(dirname(n), basename(n, _ext) + '@2x' + _ext)
+			push(_buf, url(_url))
+		else
+			push(_buf, n)
+	background _buf
+	_w = image-size(_url)[0] * image-pixel-ratio
+	_h = image-size(_url)[1] * image-pixel-ratio
+	if _url != '' && image-pixel-ratio != 1
+		background-size _w _h
+	@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2)
+		background-size _w _h
+		background-image url(_url2)
+
+
 bl(_bottom = 0, _left = 0)
 	bottom-left(_bottom, _left)
 
