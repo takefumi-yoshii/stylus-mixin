@@ -1,0 +1,111 @@
+_px(v)
+	if unit(v) == ''
+		unit(v, 'px')
+	else
+		v
+
+cube(_width, _height, _perspective, _duration = .3s)
+	display block
+	width _px(_width)
+	height _px(_height)
+	position relative
+	perspective _px(_perspective)
+	>*
+		display block
+		width _px(_width)
+		height _px(_height)
+		position absolute
+		transition all _duration
+		pointer-events none
+		&:nth-child(1)
+			z-index 2
+		&:nth-child(2)
+			z-index 1
+	&:hover>:nth-child(1)
+			z-index 1
+	&:hover>:nth-child(2)
+			z-index 1
+
+xcube(_width, _height, _perspective = 300px, _duration = .3s, _direction = true)
+	cube(_width, _height, _perspective, _duration)
+	>
+		&:nth-child(1)
+			transform rotateX(0deg)
+			transform-origin 50% 50% _px(_height)*-0.5
+		&:nth-child(2)
+			transform-origin 50% 50% _px(_height)*-0.5
+			if _direction
+				transform rotateX(90deg)
+			else
+				transform rotateX(-90deg)
+	&:hover>:nth-child(1)
+			if _direction
+				transform rotateX(-90deg)
+			else
+				transform rotateX(90deg)
+	&:hover>:nth-child(2)
+			transform rotateX(0deg)
+
+ycube(_width, _height, _perspective = 300px, _duration = .3s, _direction = true)
+	cube(_width, _height, _perspective, _duration)
+	>
+		&:nth-child(1)
+			transform rotateY(0deg)
+			transform-origin 50% 50% _px(_width)*-0.5
+		&:nth-child(2)
+			transform-origin 50% 50% _px(_width)*-0.5
+			if _direction
+				transform rotateY(90deg)
+			else
+				transform rotateY(-90deg)
+	&:hover>:nth-child(1)
+			if _direction
+				transform rotateY(-90deg)
+			else
+				transform rotateY(90deg)
+	&:hover>:nth-child(2)
+			transform rotateY(0deg)
+
+animation-count(_id, _duration = .3s, _timingfunction = linear)
+	animation-name _id
+	animation-duration _duration
+	animation-iteration-count 1
+	animation-timing-function _timingfunction
+
+animation-loop(_id, _duration = .3s, _timingfunction = linear)
+	animation-name _id
+	animation-duration _duration
+	animation-iteration-count infinite
+	animation-timing-function _timingfunction
+
+animation-repeat-keyframes(_id, _start, _end)
+	@keyframes {_id}
+		0%
+			{_start}
+		99%
+			{_end}
+
+animation-shuttle-keyframes(_id, _start, _end)
+	@keyframes {_id}
+		0%
+			{_start}
+		50%
+			{_end}
+		100%
+			{_start}
+
+transform-repeat-keyframes(_id, _start, _end)
+	@keyframes {_id}
+		0%
+			transform _start
+		100%
+			transform _end
+
+transform-shuttle-keyframes(_id, _start, _end)
+	@keyframes {_id}
+		0%
+			transform _start
+		50%
+			transform _end
+		100%
+			transform _start

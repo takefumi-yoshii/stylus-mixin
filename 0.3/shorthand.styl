@@ -1,0 +1,511 @@
+_px(v)
+	if type(v) == 'unit'
+		if unit(v) == ''
+			unit(v, 'px')
+		else
+			v
+	else
+		v
+
+_second(v)
+	if type(v) == 'unit'
+		if unit(v) == ''
+			unit(v, 's')
+		else
+			v
+	else
+		v
+
+_degree(v)
+	if type(v) == 'unit'
+		if unit(v) == ''
+			unit(v, 'deg')
+		else
+			v
+	else
+		v
+
+// ------------------------------------------------------------
+// @ A
+
+// ------------------------------------------------------------
+// @ B
+
+b(v)
+	bottom _px(v)
+
+bg()
+	_url = ''
+	_buf = null
+	for n in arguments
+		if type(n) == 'string'
+			_url = n
+			push(_buf, url(_url))
+		else
+			push(_buf, n)
+	background _buf
+	if _url != '' && image-pixel-ratio != 1
+		_w = image-size(_url)[0] * image-pixel-ratio
+		_h = image-size(_url)[1] * image-pixel-ratio
+		background-size _w _h
+
+bg2()
+	_url = ''
+	_url2 = ''
+	_buf = null
+	for n in arguments
+		if type(n) == 'string'
+			_url = n
+			_ext = extname(n)
+			_url2 = pathjoin(dirname(n), basename(n, _ext) + '@2x' + _ext)
+			push(_buf, url(_url))
+		else
+			push(_buf, n)
+	background _buf
+	_w = image-size(_url)[0] * image-pixel-ratio
+	_h = image-size(_url)[1] * image-pixel-ratio
+	if _url != '' && image-pixel-ratio != 1
+		background-size _w _h
+	@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2)
+		background-size _w _h
+		background-image url(_url2)
+
+
+bl(_bottom = 0, _left = 0)
+	bottom-left(_bottom, _left)
+
+br(_bottom = 0, _right = 0)
+	bottom-right(_bottom, _right)
+
+bas()
+	background-size arguments
+
+baa()
+	background-attachment arguments
+
+bac()
+	background-color arguments
+
+bai()
+	background-image url(arguments)
+
+bap()
+	background-position _px(arguments[0]) _px(arguments[1])
+
+bar()
+	background-repeat arguments
+
+bo()
+	_buf = null
+	for n in arguments
+		push(_buf, _px(n))
+	border _buf
+
+bob()
+	_buf = null
+	for n in arguments
+		push(_buf, _px(n))
+	border-bottom _buf
+
+bol()
+	_buf = null
+	for n in arguments
+		push(_buf, _px(n))
+	border-left _buf
+
+bor()
+	_buf = null
+	for n in arguments
+		push(_buf, _px(n))
+	border-right _buf
+
+bot()
+	_buf = null
+	for n in arguments
+		push(_buf, _px(n))
+	border-top _buf
+
+bos()
+	_buf = null
+	for n in arguments
+		push(_buf, _px(n))
+	box-shadow _buf
+
+boc()
+	border-collapse arguments
+
+bra(v)
+	border-radius _px(v)
+
+// ------------------------------------------------------------
+// @ C
+
+c()
+	center()
+
+cl()
+	clear arguments
+
+clf()
+	clear-fix()
+
+col()
+	if length(arguments) == 1
+		color arguments
+	else
+		color rgba(arguments)
+
+cur()
+	cursor arguments
+
+cir()
+	circle()
+
+// ------------------------------------------------------------
+// @ D
+
+di(v)
+	if v == b
+		display block
+	else if v == i
+		display inline
+	else if v == ib
+		inline-block()
+	else if v == n
+		display none
+
+dur()
+	transition-duration _second(arguments)
+
+del()
+	transition-delay _second(arguments)
+
+// ------------------------------------------------------------
+// @ E
+
+// ------------------------------------------------------------
+// @ F
+
+fl(v)
+	if v == l
+		float left
+	else if v == r
+		float right
+	else
+		float arguments
+
+ffg()
+	font-family 'Hiragino Kaku Gothic ProN' Meiryo sans-serif
+
+ffs()
+	font-family 'Hiragino Mincho ProN' serif
+
+fsz()
+	font-size _px(arguments)
+
+fow(v)
+	if v == b
+		font-weight bolder
+	else
+		font-weight arguments
+
+// ------------------------------------------------------------
+// @ G
+// ------------------------------------------------------------
+// @ H
+
+h(v)
+	height _px(v)
+
+ha()
+	hover-alpha(arguments)
+
+hs()
+	hover-scale(arguments)
+
+// ------------------------------------------------------------
+// @ I
+
+im()
+	img(arguments)
+
+im2()
+	img2(arguments)
+
+// ------------------------------------------------------------
+// @ J
+// ------------------------------------------------------------
+// @ K
+// ------------------------------------------------------------
+// @ L
+
+l(v)
+	left _px(v)
+
+lh(v)
+	line-height _px(v)
+
+// ------------------------------------------------------------
+// @ M
+
+m()
+	_buf = null
+	for n in arguments
+		push(_buf, _px(n))
+	margin _buf
+
+mt()
+	margin-top _px(arguments)
+
+mb()
+	margin-bottom _px(arguments)
+
+ml()
+	margin-left _px(arguments)
+
+mr()
+	margin-right _px(arguments)
+
+miw()
+	min-width _px(arguments)
+
+maw()
+	max-width _px(arguments)
+
+mih()
+	min-height _px(arguments)
+
+mah()
+	max-height _px(arguments)
+
+
+mmw(_min, _max)
+	min-max-width(_min, _max)
+
+// ------------------------------------------------------------
+// @ N
+// ------------------------------------------------------------
+// @ O
+
+ovf(v)
+	if v == h
+		overflow hidden
+	else if v == a
+		overflow auto
+	else
+		overflow v
+
+opa()
+	opacity arguments
+
+// ------------------------------------------------------------
+// @ P
+
+p()
+	_buf = null
+	for n in arguments
+		push(_buf, _px(n))
+	padding _buf
+
+
+pb()
+	padding-bottom _px(arguments)
+
+per()
+	perspective _px(arguments)
+
+pero()
+	perspective-origin arguments
+
+pl()
+	padding-left _px(arguments)
+
+pr()
+	padding-right _px(arguments)
+
+pt()
+	padding-top _px(arguments)
+
+po(v)
+	if v == r
+		position relative
+	else if v == a
+		position absolute
+	else if v == f
+		position fixed
+	else if v == s
+		position static
+	else
+		position arguments
+
+pit()
+	transform rotateX(_degree(arguments))
+
+// ------------------------------------------------------------
+// @ Q
+// ------------------------------------------------------------
+// @ R
+
+r(v)
+	right _px(v)
+
+rot()
+	transform rotate(_degree(arguments))
+
+rol()
+	transform rotateZ(_degree(arguments))
+
+r3d()
+	v = arguments
+	transform rotate3d(v[0],v[1],v[2],_degree(v[3]))
+
+// ------------------------------------------------------------
+// @ S
+
+sca()
+	transform scale(arguments)
+
+scx()
+	transform scaleX(arguments)
+
+scy()
+	transform scaleY(arguments)
+
+scz()
+	transform scaleZ(arguments)
+
+// ------------------------------------------------------------
+// @ T
+
+t(v)
+	top _px(v)
+
+tfm()
+	_buf = null
+	for k,v in arguments
+		if k == 'tra'
+			push(_buf, translate(_px(v[0]),_px(v[1])))
+		if k == 'tx'
+			push(_buf, translateX(_px(v)))
+		if k == 'ty'
+			push(_buf, translateY(_px(v)))
+		if k == 'tz'
+			push(_buf, translateZ(_px(v)))
+		if k == 't3d'
+			push(_buf, translate3d(_px(v[0]),_px(v[1]),_px(v[2])))
+		if k == 'sca'
+			push(_buf, scale(v))
+		if k == 'scx'
+			push(_buf, scaleX(v))
+		if k == 'scy'
+			push(_buf, scaleY(v))
+		if k == 'scz'
+			push(_buf, scaleZ(v))
+		if k == 's3d'
+			push(_buf, scale3d(v[0],v[1],v[2]))
+		if k == 'rot'
+			push(_buf, rotate(_degree(v)))
+		if k == 'pit'
+			push(_buf, rotateX(_degree(v)))
+		if k == 'yow'
+			push(_buf, rotateY(_degree(v)))
+		if k == 'rol'
+			push(_buf, rotateZ(_degree(v)))
+		if k == 'r3d'
+			push(_buf, rotate3d(v[0],v[1],v[2],_degree(v[3])))
+		if k == 'per'
+			push(_buf, perspective(v))
+	transform _buf
+
+tl(_top = 0, _left = 0)
+	top-left(_top, _left)
+
+tr(_top = 0, _right = 0)
+	top-right(_top, _right)
+
+tra()
+	v = arguments
+	transform translate(_px(v[0]),_px(v[1]))
+
+trao()
+	transform-origin arguments
+
+tras()
+	transform-style arguments
+
+ts()
+	touch-scroll()
+
+tx()
+	transform translateX(_px(arguments))
+
+ty()
+	transform translateY(_px(arguments))
+
+tz()
+	transform translateZ(_px(arguments))
+
+t3d()
+	v = arguments
+	transform translate3d(_px(v[0]),_px(v[1]),_px(v[2]))
+
+tpr()
+	transition-property arguments
+
+tor()
+	transform-origin arguments
+
+tea(v)
+
+	if v == c
+		text-align center
+	else if v == l
+		text-align left
+	else if v == r
+		text-align right
+	else
+		text-align arguments
+
+ted(v)
+	if v == n
+		text-decoration none
+	else if v == u
+		text-decoration underline
+	else
+		text-decoration arguments
+
+tei(v)
+	text-indent _px(v)
+
+tes()
+	text-shadow arguments
+
+
+// ------------------------------------------------------------
+// @ U
+// ------------------------------------------------------------
+// @ V
+// ------------------------------------------------------------
+// @ W
+
+w(v)
+	width _px(v)
+
+wh(_w, _h)
+	width _px(_w)
+	height _px(_h)
+
+// ------------------------------------------------------------
+// @ X
+
+// ------------------------------------------------------------
+// @ Y
+
+yow()
+	transform rotateY(_degree(arguments))
+
+// ------------------------------------------------------------
+// @ Z
+
+z(v)
+	z-index v

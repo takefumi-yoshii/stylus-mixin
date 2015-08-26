@@ -1,0 +1,154 @@
+image-pixel-ratio = 1 / image-pixel-ratio
+
+hover-alpha(_alpha = 0.6)
+	&:hover
+		opacity(_alpha)
+
+hover-scale(_scale = 1.2)
+	&:hover
+		transform scale(_scale)
+
+img()
+	_url = ''
+	_buf = null
+	for n in arguments
+		if type(n) == 'string'
+			_url = n
+			push(_buf, url(_url))
+		else
+			push(_buf, n)
+	display block
+	width _w = ceil( image-size(_url)[0] * image-pixel-ratio )
+	height _h = ceil( image-size(_url)[1] * image-pixel-ratio )
+	overflow hidden
+	text-indent -9999px
+	background _buf
+	background-repeat no-repeat
+	if image-pixel-ratio != 1
+		background-size _w _h
+
+img2()
+	_url = ''
+	_url2 = ''
+	_buf = null
+	for n in arguments
+		if type(n) == 'string'
+			_url = n
+			_ext = extname(n)
+			_url2 = pathjoin(dirname(n), basename(n, _ext) + '@2x' + _ext)
+			push(_buf, url(_url))
+		else
+			push(_buf, n)
+	display block
+	width _w = ceil( image-size(_url)[0] * image-pixel-ratio )
+	height _h = ceil( image-size(_url)[1] * image-pixel-ratio )
+	overflow hidden
+	text-indent -9999px
+	background _buf
+	background-repeat no-repeat
+	if image-pixel-ratio != 1
+		background-size _w _h
+	@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2)
+		background-size _w _h
+		background-image url(_url2)
+
+aimg()
+	img(arguments)
+	hover-alpha()
+
+aimg2()
+	img2(arguments)
+	hover-alpha()
+
+simg()
+	img(arguments)
+	hover-scale()
+
+simg2()
+	img2(arguments)
+	hover-scale()
+
+btn()
+	_url = ''
+	_buf = null
+	for n in arguments
+		if type(n) == 'string'
+			_url = n
+			push(_buf, url(_url))
+		else
+			push(_buf, n)
+
+	display block
+	width _w = ceil( image-size(_url)[0] * image-pixel-ratio )
+	height _h = ceil( image-size(_url)[1] * image-pixel-ratio *0.5 )
+	a
+		display block
+		width _w
+		height _h
+		overflow hidden
+		text-indent -9999px
+		background _buf
+		background-repeat no-repeat
+		if image-pixel-ratio != 1
+			background-size _w _h*2
+		&:hover
+			background-position 0 _h*-1
+
+btn2()
+	_url = ''
+	_url2 = ''
+	_buf = null
+	for n in arguments
+		if type(n) == 'string'
+			_url = n
+			_ext = extname(n)
+			_url2 = pathjoin(dirname(n), basename(n, _ext) + '@2x' + _ext)
+			push(_buf, url(_url))
+		else
+			push(_buf, n)
+
+	display block
+	width _w = ceil( image-size(_url)[0] * image-pixel-ratio )
+	height _h = ceil( image-size(_url)[1] * image-pixel-ratio *0.5 )
+	a
+		display block
+		width _w
+		height _h
+		overflow hidden
+		text-indent -9999px
+		background _buf
+		background-repeat no-repeat
+		if image-pixel-ratio != 1
+			background-size _w _h*2
+		&:hover
+			background-position 0 _h*-1
+	@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2)
+		a
+			background-size _w _h*2
+			background-image url(_url2)
+
+abtn()
+	btn(arguments)
+	a
+		hover-alpha()
+
+abtn2()
+	btn2(arguments)
+	a
+		hover-alpha()
+
+sbtn()
+	btn(arguments)
+	a
+		hover-scale()
+
+sbtn2()
+	btn2(arguments)
+	a
+		hover-scale()
+
+circle()
+	if @width
+		border-radius @width*0.5
+	else if @height
+		border-radius @height*0.5
