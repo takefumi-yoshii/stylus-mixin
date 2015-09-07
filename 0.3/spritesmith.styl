@@ -1,0 +1,26 @@
+
+spriteWidth($sprite)
+    width: $sprite[4] * image-pixel-ratio
+
+spriteHeight($sprite)
+    height: $sprite[5] * image-pixel-ratio
+
+spritePosition($sprite)
+    left = $sprite[2] * image-pixel-ratio
+    top = $sprite[3] * image-pixel-ratio
+    background-position: left top
+
+spriteImage($sprite,$pathResolve)
+    bg $pathResolve+$sprite[8]
+
+sprite($sprite,$pathResolve)
+    spriteImage($sprite,$pathResolve)
+    spritePosition($sprite)
+    spriteWidth($sprite)
+    spriteHeight($sprite)
+
+sprites($sprites,$pathResolve)
+    for $sprite in $sprites
+        $sprite_name = $sprite[9]
+        .{$sprite_name}
+            sprite($sprite,$pathResolve)
