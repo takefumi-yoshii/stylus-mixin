@@ -29,13 +29,13 @@ tap-highlight-color()
 	-webkit-tap-highlight-color arguments
 
 
-border-image(source, width = '1px', slice = '100%', outset = '1px', repeat = 'repeat')
-	border-image-source: url(source)
-	border-image-slice: slice
-	border-image-width: width
-	border-image-outset: outset
-	border-image-repeat: repeat
-	-webkit-border-image: url(source) slice width outset repeat
-	-moz-border-image: url(source) slice width outset repeat
-	-ms-border-image: url(source) slice width outset repeat
-	-o-border-image: url(source) slice width outset repeat
+border-image(source, width = 1, slice = 100%, outset = 1, repeat = 'repeat')
+	border-image-source = url(source)
+	border-image-slice = _px(slice)
+	border-image-width = _px(width)
+	border-image-outset = _px(outset)
+	border-image-repeat = repeat
+	-webkit-border-image border-image-source border-image-slice border-image-width border-image-outset border-image-repeat
+	-moz-border-image border-image-source border-image-slice border-image-width border-image-outset border-image-repeat
+	-ms-border-image border-image-source border-image-slice border-image-width border-image-outset border-image-repeat
+	-o-border-image border-image-source border-image-slice border-image-width border-image-outset border-image-repeat
