@@ -1,3 +1,5 @@
+@import 'util.styl'
+
 clear-fix()
 	&:after
 		content: "."
@@ -18,7 +20,22 @@ inline-block()
 	display inline-block
 	vertical-align middle
 	zoom 1
-	
+
 touch-scroll()
 	overflow scroll
 	-webkit-overflow-scrolling touch
+
+tap-highlight-color()
+	-webkit-tap-highlight-color arguments
+
+
+border-image(source, width = '1px', slice = '100%', outset = '1px', repeat = 'repeat')
+	border-image-source: url(source)
+	border-image-slice: slice
+	border-image-width: width
+	border-image-outset: outset
+	border-image-repeat: repeat
+	-webkit-border-image: url(source) slice width outset repeat
+	-moz-border-image: url(source) slice width outset repeat
+	-ms-border-image: url(source) slice width outset repeat
+	-o-border-image: url(source) slice width outset repeat

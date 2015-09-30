@@ -21,10 +21,22 @@ cube(_width, _height, _perspective, _duration = .3s)
 			z-index 2
 		&:nth-child(2)
 			z-index 1
-	&:hover>:nth-child(1)
+	&:hover>
+		&:nth-child(1)
 			z-index 1
-	&:hover>:nth-child(2)
+		&:nth-child(2)
 			z-index 1
+	/html.no-csstransitions &
+		>*
+			&.off
+				display block
+			&.on 
+				display none
+		&:hover>
+			.off
+				display none
+			.on 
+				display block
 
 xcube(_width, _height, _perspective = 300px, _duration = .3s, _direction = true)
 	cube(_width, _height, _perspective, _duration)

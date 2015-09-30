@@ -2,7 +2,9 @@ image-pixel-ratio = 1 / image-pixel-ratio
 
 hover-alpha(_alpha = 0.6)
 	&:hover
-		opacity(_alpha)
+		opacity _alpha
+	/html.ie6 &:hover, /html.ie7 &:hover, /html.ie8 &:hover
+		opacity 1
 
 hover-scale(_scale = 1.2)
 	&:hover
@@ -53,12 +55,14 @@ img2()
 		background-image url(_url2)
 
 aimg()
-	img(arguments)
 	hover-alpha()
+	img(arguments)
+	
 
 aimg2()
-	img2(arguments)
 	hover-alpha()
+	img2(arguments)
+	
 
 simg()
 	img(arguments)

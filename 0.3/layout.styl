@@ -1,14 +1,10 @@
-_px(v)
-	if unit(v) == ''
-		unit(v, 'px')
-	else
-		v
+@import 'util.styl'
 
 width-height(_w, _h)
 	width _px(_w)
 	height _px(_h)
 
-center() 
+center()
 	margin 0 auto
 
 top-left(_top = 0, _left = 0)

@@ -1,8 +1,4 @@
-_px(v)
-	if unit(v) == ''
-		unit(v, 'px')
-	else
-		v
+@import 'util.styl'
 
 cube(_width, _height, _perspective, _duration = .3s)
 	display block
@@ -66,10 +62,10 @@ ycube(_width, _height, _perspective = 300px, _duration = .3s, _direction = true)
 	&:hover>:nth-child(2)
 			transform rotateY(0deg)
 
-animation-count(_id, _duration = .3s, _timingfunction = linear)
+animation-count(_id, _duration = .3s, _count = 1, _timingfunction = linear)
 	animation-name _id
 	animation-duration _duration
-	animation-iteration-count 1
+	animation-iteration-count _count
 	animation-timing-function _timingfunction
 
 animation-loop(_id, _duration = .3s, _timingfunction = linear)

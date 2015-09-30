@@ -1,2 +1,28 @@
+_px(v)
+	if type(v) == 'unit'
+		if unit(v) == ''
+			unit(v, 'px')
+		else
+			v
+	else
+		v
+_second(v)
+	if type(v) == 'unit'
+		if unit(v) == ''
+			unit(v, 's')
+		else
+			v
+	else
+		v
+
+_degree(v)
+	if type(v) == 'unit'
+		if unit(v) == ''
+			unit(v, 'deg')
+		else
+			v
+	else
+		v
+
 random(_range)
-    return math(math(0, 'random') * _range , 'floor')
+	return math(math(0, 'random') * _range , 'floor')

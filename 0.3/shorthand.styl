@@ -1,29 +1,4 @@
-_px(v)
-	if type(v) == 'unit'
-		if unit(v) == ''
-			unit(v, 'px')
-		else
-			v
-	else
-		v
-
-_second(v)
-	if type(v) == 'unit'
-		if unit(v) == ''
-			unit(v, 's')
-		else
-			v
-	else
-		v
-
-_degree(v)
-	if type(v) == 'unit'
-		if unit(v) == ''
-			unit(v, 'deg')
-		else
-			v
-	else
-		v
+@import 'util.styl'
 
 // ------------------------------------------------------------
 // @ A
@@ -107,6 +82,12 @@ bob()
 		push(_buf, _px(n))
 	border-bottom _buf
 
+boc()
+	border-collapse arguments
+
+boi()
+	border-image arguments
+
 bol()
 	_buf = null
 	for n in arguments
@@ -131,8 +112,6 @@ bos()
 		push(_buf, _px(n))
 	box-shadow _buf
 
-boc()
-	border-collapse arguments
 
 bra(v)
 	border-radius _px(v)
@@ -382,6 +361,9 @@ scz()
 
 t(v)
 	top _px(v)
+
+tc()
+	tap-highlight-color(arguments)
 
 tfm()
 	_buf = null
