@@ -25,3 +25,11 @@ sprites($sprites,$pathResolve)
         $sprite_name = $sprite[9]
         .{$sprite_name}
             sprite($sprite,$pathResolve)
+
+sprites-origin-center($sprites,$pathResolve,$offsetX=-.5,$offsetY=-.5)
+    for $sprite in $sprites
+        $sprite_name = $sprite[9]
+        .{$sprite_name}
+            sprite($sprite,$pathResolve)
+            ml @width*$offsetX
+            mt @height*$offsetY
