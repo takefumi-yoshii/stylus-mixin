@@ -64,6 +64,22 @@ bac()
 bai()
 	background-image url(arguments)
 
+bai2()
+	_url = ''
+	_url2 = ''
+	_buf = null
+	for n in arguments
+		if type(n) == 'string'
+			_url = n
+			_ext = extname(n)
+			_url2 = pathjoin(dirname(n), basename(n, _ext) + '@2x' + _ext)
+			push(_buf, url(_url))
+		else
+			push(_buf, n)
+	background-image url(_url)
+	@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2)
+		background-image url(_url2)
+
 bap()
 	background-position _px(arguments[0]) _px(arguments[1])
 
